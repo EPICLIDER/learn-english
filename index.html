@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnEnglish — Fun English Learning for Students</title>
+    <meta name="description"
+        content="An interactive English learning website for students. Practice vocabulary, take quizzes, learn grammar, and discover new words every day.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===== Navigation ===== -->
+    <nav class="nav" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">📖</span> LearnEnglish
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#vocabulary">Vocabulary</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#grammar">Grammar</a></li>
+                <li><a href="#word-of-day">Word of Day</a></li>
+            </ul>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== Hero Section ===== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Learn English<br>The <span class="gradient-text">Fun Way</span> ✨</h1>
+                    <p>Explore vocabulary, test your knowledge with quizzes, master grammar rules, and discover amazing
+                        new words every day. Learning has never been this exciting!</p>
+                    <div class="hero-buttons">
+                        <a href="#vocabulary" class="btn btn-primary">Start Learning 🚀</a>
+                        <a href="#quiz" class="btn btn-secondary">Take a Quiz 🧠</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-letters">
+                        <span class="floating-letter">A</span>
+                        <span class="floating-letter">B</span>
+                        <span class="floating-letter">C</span>
+                        <span class="floating-letter">E</span>
+                        <span class="floating-letter">N</span>
+                        <span class="floating-letter">G</span>
+                        <span class="floating-letter">!</span>
+                        <span class="floating-letter">?</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Features Section ===== -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Why You'll <span class="gradient-text">Love It</span></h2>
+                <p>Everything you need to start your English journey, all in one place.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">📚</div>
+                    <h3>Interactive Vocabulary</h3>
+                    <p>Learn words with pictures, pronunciation, and translations. Tap cards to reveal meanings!</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Fun Quizzes</h3>
+                    <p>Test your knowledge with engaging quizzes. Track your progress and beat your high score!</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🗣️</div>
+                    <h3>Listen & Speak</h3>
+                    <p>Hear correct pronunciation for every word. Practice speaking with confidence!</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">✨</div>
+                    <h3>Daily Words</h3>
+                    <p>Discover a new word every day with its meaning, phonetics, and real-life example.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Vocabulary Section ===== -->
+    <section class="section" id="vocabulary">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Learn New <span class="gradient-text">Words</span></h2>
+                <p>Choose a category and click on a card to reveal its translation. Use the 🔊 button to hear the
+                    pronunciation!</p>
+            </div>
+
+            <div class="vocab-categories reveal">
+                <button class="vocab-tab active" data-category="animals">🐾 Animals</button>
+                <button class="vocab-tab" data-category="food">🍎 Food</button>
+                <button class="vocab-tab" data-category="colors">🎨 Colors</button>
+                <button class="vocab-tab" data-category="family">👨‍👩‍👧‍👦 Family</button>
+                <button class="vocab-tab" data-category="school">🏫 School</button>
+            </div>
+
+            <div class="vocab-grid reveal" id="vocab-grid">
+                <!-- Vocab cards rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Quiz Section ===== -->
+    <section class="section" id="quiz">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Test Your <span class="gradient-text">Knowledge</span></h2>
+                <p>Answer 5 quick questions and see how well you know English!</p>
+            </div>
+
+            <div class="quiz-container reveal">
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+                    </div>
+                    <span class="quiz-progress-text" id="quiz-progress-text">1/5</span>
+                </div>
+
+                <div class="quiz-score">
+                    ⭐ Score: <span id="quiz-score-value">0</span>
+                </div>
+
+                <div class="quiz-question" id="quiz-question"></div>
+                <div class="quiz-options" id="quiz-options"></div>
+                <div class="quiz-feedback" id="quiz-feedback"></div>
+
+                <button class="btn btn-primary quiz-next" id="quiz-next" onclick="nextQuestion()">Next Question
+                    →</button>
+
+                <div class="quiz-result" id="quiz-result-container">
+                    <h3>Quiz Complete!</h3>
+                    <div class="result-score" id="quiz-result-score"></div>
+                    <p id="quiz-result-message"></p>
+                    <button class="btn btn-primary" onclick="restartQuiz()">Try Again 🔄</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Grammar Section ===== -->
+    <section class="section" id="grammar">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Grammar <span class="gradient-text">Tips</span></h2>
+                <p>Quick and simple grammar rules to help you speak and write correctly.</p>
+            </div>
+
+            <div class="grammar-grid">
+                <div class="grammar-card reveal">
+                    <h3>📌 To Be (am / is / are) <span class="tag">Basic</span></h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Use <strong>am</strong> with I,
+                        <strong>is</strong> with he/she/it, and <strong>are</strong> with you/we/they.</p>
+                    <div class="grammar-example">
+                        <span class="correct">✓ I <strong>am</strong> a student.</span><br>
+                        <span class="correct">✓ She <strong>is</strong> happy.</span><br>
+                        <span class="correct">✓ They <strong>are</strong> friends.</span><br>
+                        <span class="incorrect">✗ I is a student.</span>
+                    </div>
+                </div>
+
+                <div class="grammar-card reveal">
+                    <h3>📌 Articles (a / an / the) <span class="tag">Basic</span></h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Use <strong>a</strong> before consonant
+                        sounds and <strong>an</strong> before vowel sounds. Use <strong>the</strong> for specific
+                        things.</p>
+                    <div class="grammar-example">
+                        <span class="correct">✓ I have <strong>a</strong> dog.</span><br>
+                        <span class="correct">✓ She eats <strong>an</strong> apple.</span><br>
+                        <span class="correct">✓ <strong>The</strong> sun is bright.</span><br>
+                        <span class="incorrect">✗ I have an dog.</span>
+                    </div>
+                </div>
+
+                <div class="grammar-card reveal">
+                    <h3>📌 Present Simple <span class="tag">Intermediate</span></h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Add <strong>-s</strong> or
+                        <strong>-es</strong> for he/she/it in present simple tense.</p>
+                    <div class="grammar-example">
+                        <span class="correct">✓ He <strong>plays</strong> football.</span><br>
+                        <span class="correct">✓ She <strong>watches</strong> TV.</span><br>
+                        <span class="correct">✓ I <strong>like</strong> ice cream.</span><br>
+                        <span class="incorrect">✗ She play football.</span>
+                    </div>
+                </div>
+
+                <div class="grammar-card reveal">
+                    <h3>📌 Plural Nouns <span class="tag">Basic</span></h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Most nouns add <strong>-s</strong>.
+                        Some add <strong>-es</strong>, <strong>-ies</strong>, or change form entirely.</p>
+                    <div class="grammar-example">
+                        <span class="correct">✓ cat → <strong>cats</strong></span><br>
+                        <span class="correct">✓ box → <strong>boxes</strong></span><br>
+                        <span class="correct">✓ baby → <strong>babies</strong></span><br>
+                        <span class="correct">✓ child → <strong>children</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Word of the Day ===== -->
+    <section class="section" id="word-of-day">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Word of <span class="gradient-text">the Day</span></h2>
+                <p>Expand your vocabulary — one word at a time!</p>
+            </div>
+
+            <div class="word-of-day reveal">
+                <div class="wod-label">📅 Word of the Day</div>
+                <div class="wod-word" id="wod-word"></div>
+                <div class="wod-phonetic" id="wod-phonetic"></div>
+                <div class="wod-type" id="wod-type"></div>
+                <div class="wod-definition" id="wod-definition"></div>
+                <div class="wod-example" id="wod-example"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <span class="footer-logo">📖 LearnEnglish</span>
+                <ul class="footer-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#vocabulary">Vocabulary</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                    <li><a href="#grammar">Grammar</a></li>
+                </ul>
+                <p class="footer-copy">Made with ❤️ for English learners everywhere. Keep learning, keep growing!</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="app.js"></script>
+
+</body>
+
+</html>
